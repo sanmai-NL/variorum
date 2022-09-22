@@ -5,6 +5,7 @@ variables:
 stages:
   - format
   - build
+  - verify
 
 build-quartz-format:
  tags:
@@ -236,6 +237,6 @@ build-corona-check-output:
  tags:
    - shell
    - corona
- stage: build
+ stage: verify
  script:
    - cat flux-corona.out
