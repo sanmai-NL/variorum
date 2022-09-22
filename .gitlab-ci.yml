@@ -225,4 +225,6 @@ build-corona:
    - corona
  stage: build
  script:
-   - flux mini batch -N 1 scripts/gitlab/corona_build_and_test.sh
+   - flux mini batch -N 1 --output=res.out scripts/gitlab/corona_build_and_test.sh
+   - sleep 3m
+   - cat res.out
