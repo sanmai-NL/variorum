@@ -5,7 +5,6 @@ variables:
 stages:
   - format
   - build
-  - verify
 
 build-quartz-format:
  tags:
@@ -228,15 +227,4 @@ build-corona:
  script:
    - flux mini submit -N 1 --output=flux-corona.out --time-limit=2m scripts/gitlab/corona_build_and_test.sh
    - sleep 2m
- artifacts:
-   paths:
-     - flux-corona.out
-   expire_in: 1 week
-
-build-corona-check-output:
- tags:
-   - shell
-   - corona
- stage: verify
- script:
    - cat flux-corona.out
