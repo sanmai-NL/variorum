@@ -225,5 +225,13 @@ build-corona:
    - corona
  stage: build
  script:
-   - fluxid=$(flux mini submit -N 1 scripts/gitlab/corona_build_and_test.sh)
-   - cat flux-${fluxid}.out
+   - flux mini submit -N 1 scripts/gitlab/corona_build_and_test.sh
+
+build-corona-check-output:
+ tags:
+   - shell
+   - corona
+ stage: build
+ script:
+   - ls flux-*.out
+   - cat flux-*.out
