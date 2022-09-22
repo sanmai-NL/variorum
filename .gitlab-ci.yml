@@ -225,7 +225,12 @@ build-corona:
    - corona
  stage: build
  script:
-   - flux mini submit -N 1 scripts/gitlab/corona_build_and_test.sh
+   - fluxid=$(flux mini submit -N 1 scripts/gitlab/corona_build_and_test.sh)
+ artifacts:
+   FLUX_ID: ${fluxid}
+   paths:
+     - flux-${fluxid}.out
+   expire_in: 1 week
 
 build-corona-check-output:
  tags:
@@ -233,5 +238,5 @@ build-corona-check-output:
    - corona
  stage: build
  script:
-   - ls flux-*.out
-   - cat flux-*.out
+   - ls flux-${FLUX_ID}.out
+   - cat flux-${FLUX_ID}.out
