@@ -225,7 +225,7 @@ build-corona:
    - corona
  stage: build
  script:
-   - flux mini submit -N 1 --output=flux-corona.out scripts/gitlab/corona_build_and_test.sh
+   - flux mini submit -N 1 --output=flux-corona.out --wait scripts/gitlab/corona_build_and_test.sh
  artifacts:
    paths:
      - flux-corona.out
