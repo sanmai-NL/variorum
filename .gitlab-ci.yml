@@ -226,5 +226,5 @@ build-corona:
  stage: build
  script:
    - flux mini submit -N 1 --output=flux-corona.out --time-limit=2m scripts/gitlab/corona_build_and_test.sh
-   - sleep 2m
+   - sleep 3m
    - cat flux-corona.out
