@@ -285,7 +285,7 @@ build-lassen-gpu:
     # A true statement is expected to allow jobs to run. Here is the default.
     - when: on_success
 
-.quartz_status_report: &status_report
+.quartz_status_report: &quartz_status_report
     - export context="quartz"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
@@ -298,14 +298,14 @@ quartz_status_pending:
   stage: status_initiate
   script:
     - export pipeline_status="pending"
-    - *status_report
+    - *quartz_status_report
 
 quartz_status_success:
   extends: [.on_quartz]
   stage: status_update
   script:
     - export pipeline_status="success"
-    - *status_report
+    - *quartz_status_report
   when: on_success
 
 quartz_status_failure:
@@ -313,7 +313,7 @@ quartz_status_failure:
   stage: status_update
   script:
     - export pipeline_status="failure"
-    - *status_report
+    - *quartz_status_report
   when: on_failure
 
 .on_lassen:
@@ -327,7 +327,7 @@ quartz_status_failure:
     # A true statement is expected to allow jobs to run. Here is the default.
     - when: on_success
 
-.lassen_status_report: &status_report
+.lassen_status_report: &lassen_status_report
     - export context="lassen"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
@@ -340,14 +340,14 @@ lassen_status_pending:
   stage: status_initiate
   script:
     - export pipeline_status="pending"
-    - *status_report
+    - *lassen_status_report
 
 lassen_status_success:
   extends: [.on_lassen]
   stage: status_update
   script:
     - export pipeline_status="success"
-    - *status_report
+    - *lassen_status_report
   when: on_success
 
 lassen_status_failure:
@@ -355,7 +355,7 @@ lassen_status_failure:
   stage: status_update
   script:
     - export pipeline_status="failure"
-    - *status_report
+    - *lassen_status_report
   when: on_failure
 
 #.on_corona:
@@ -411,7 +411,7 @@ lassen_status_failure:
     # A true statement is expected to allow jobs to run. Here is the default.
     - when: on_success
 
-.catalyst_status_report: &status_report
+.catalyst_status_report: &catalyst_status_report
     - export context="catalyst"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
@@ -424,14 +424,14 @@ catalyst_status_pending:
   stage: status_initiate
   script:
     - export pipeline_status="pending"
-    - *status_report
+    - *catalyst_status_report
 
 catalyst_status_success:
   extends: [.on_catalyst]
   stage: status_update
   script:
     - export pipeline_status="success"
-    - *status_report
+    - *catalyst_status_report
   when: on_success
 
 catalyst_status_failure:
@@ -439,6 +439,6 @@ catalyst_status_failure:
   stage: status_update
   script:
     - export pipeline_status="failure"
-    - *status_report
+    - *catalyst_status_report
   when: on_failure
 
