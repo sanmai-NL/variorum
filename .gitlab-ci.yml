@@ -286,12 +286,12 @@ build-catalyst:
     - when: on_success
 
 .quartz_status_report: &quartz_status_report
-    - export context="quartz"
+    - export quartz_context="quartz"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
            --header 'Content-Type: application/json' \
            --header "authorization: Bearer ${GITHUB_TOKEN}" \
-           --data "{ \"state\": \"${quartz_pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${context} pipeline\", \"context\": \"ci/gitlab/${context}\" }"
+           --data "{ \"state\": \"${quartz_pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${quartz_context} pipeline\", \"context\": \"ci/gitlab/${quartz_context}\" }"
 
 quartz_status_pending:
   extends: [.on_quartz]
@@ -328,12 +328,12 @@ quartz_status_failure:
     - when: on_success
 
 .lassen_status_report: &lassen_status_report
-    - export context="lassen"
+    - export lassen_context="lassen"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
            --header 'Content-Type: application/json' \
            --header "authorization: Bearer ${GITHUB_TOKEN}" \
-           --data "{ \"state\": \"${lassen_pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${context} pipeline\", \"context\": \"ci/gitlab/${context}\" }"
+           --data "{ \"state\": \"${lassen_pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${lassen_context} pipeline\", \"context\": \"ci/gitlab/${lassen_context}\" }"
 
 lassen_status_pending:
   extends: [.on_lassen]
@@ -412,12 +412,12 @@ lassen_status_failure:
     - when: on_success
 
 .catalyst_status_report: &catalyst_status_report
-    - export context="catalyst"
+    - export catalyst_context="catalyst"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
            --header 'Content-Type: application/json' \
            --header "authorization: Bearer ${GITHUB_TOKEN}" \
-           --data "{ \"state\": \"${catalyst_pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${context} pipeline\", \"context\": \"ci/gitlab/${context}\" }"
+           --data "{ \"state\": \"${catalyst_pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${catalyst_context} pipeline\", \"context\": \"ci/gitlab/${catalyst_context}\" }"
 
 catalyst_status_pending:
   extends: [.on_catalyst]
