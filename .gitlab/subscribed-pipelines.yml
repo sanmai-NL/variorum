@@ -1,0 +1,15 @@
+# Trigger a build pipeline for ruby, corona and lassen
+quartz-build-and-test:
+  variables:
+    CI_MACHINE: "quartz"
+  extends: [.build]
+
+catalyst-build-and-test:
+  variables:
+    CI_MACHINE: "catalyst"
+  extends: [.build]
+
+lassen-build-and-test:
+  variables:
+    CI_MACHINE: "lassen"
+  extends: [.build]

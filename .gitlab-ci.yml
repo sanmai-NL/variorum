@@ -6,6 +6,16 @@ stages:
 #  - format
   - build
 
+# Template for jobs triggering a build-and-test sub-pipelines:
+.build:
+  stage: build
+  trigger:
+    include:
+      - local: '.gitlab/${CI_MACHINE}-build-and-test.yml'
+    strategy: depend
+    forward:
+      pipeline_variables: true
+
 #build-quartz-format:
 # tags:
 #   - shell
@@ -43,8 +53,9 @@ stages:
 #   - ansible-playbook variorum-powerlab-playbook.yml
 
 include:
-  - local: .gitlab/quartz-build-and-test.yml
-  - local: .gitlab/catalyst-build-and-test.yml
-  - local: .gitlab/lassen-cpu-build-and-test.yml
-  - local: .gitlab/lassen-gpu-build-and-test.yml
+  - local: .gitlab/subscribed-pipelines.yml
+#  - local: .gitlab/quartz-build-and-test.yml
+#  - local: .gitlab/catalyst-build-and-test.yml
+#  - local: .gitlab/lassen-cpu-build-and-test.yml
+#  - local: .gitlab/lassen-gpu-build-and-test.yml
 #  - local: .gitlab/corona-build-and-test.yml
