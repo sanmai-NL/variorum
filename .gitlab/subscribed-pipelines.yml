@@ -9,7 +9,12 @@ catalyst-build-and-test:
     CI_MACHINE: "catalyst"
   extends: [.build]
 
-lassen-build-and-test:
+lassen-gpu-build-and-test:
   variables:
-    CI_MACHINE: "lassen"
+    CI_MACHINE: "lassen-gpu"
+  extends: [.build]
+
+lassen-cpu-build-and-test:
+  variables:
+    CI_MACHINE: "lassen-cpu"
   extends: [.build]
