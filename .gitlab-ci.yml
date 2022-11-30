@@ -2,9 +2,9 @@ variables:
   CUSTOM_CI_BUILDS_DIR: "/usr/workspace/variorum/gitlab-runner"
   BUILD_ROOT: ${CI_PROJECT_DIR}
 
-#stages:
+stages:
 #  - format
-#  - build
+  - build
 
 #build-quartz-format:
 # tags:
