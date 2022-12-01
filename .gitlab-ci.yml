@@ -54,10 +54,3 @@ stages:
 
 include:
   - local: .gitlab/subscribed-pipelines.yml
-#  - local: .gitlab/quartz-build-and-test.yml
-#  - local: .gitlab/catalyst-build-and-test.yml
-#  - local: .gitlab/lassen-cpu-build-and-test.yml
-#  - local: .gitlab/lassen-gpu-build-and-test.yml
-#  - local: .gitlab/corona-build-and-test.yml
-
-

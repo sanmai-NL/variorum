@@ -3,7 +3,7 @@ stages:
   - build
   - status_update
 
-.on_lassen:
+.on_lassen_gpu:
   tags:
     - shell
     - lassen
@@ -15,7 +15,7 @@ stages:
     - when: on_success
 
 .status_report: &status_report
-    - export context="lassen"
+    - export context="lassen-gpu"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
            --header 'Content-Type: application/json' \
@@ -23,14 +23,14 @@ stages:
            --data "{ \"state\": \"${pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${context} pipeline\", \"context\": \"ci/gitlab/${context}\" }"
 
 status_pending:
-  extends: [.on_lassen]
+  extends: [.on_lassen_gpu]
   stage: status_initiate
   script:
     - export pipeline_status="pending"
     - *status_report
 
 status_success:
-  extends: [.on_lassen]
+  extends: [.on_lassen_gpu]
   stage: status_update
   script:
     - export pipeline_status="success"
@@ -38,7 +38,7 @@ status_success:
   when: on_success
 
 status_failure:
-  extends: [.on_lassen]
+  extends: [.on_lassen_gpu]
   stage: status_update
   script:
     - export pipeline_status="failure"
