@@ -19,7 +19,7 @@ lassen-cpu-build-and-test:
     CI_MACHINE: "lassen-cpu"
   extends: [.build]
 
-cztb2-build-and-test:
-  variables:
-    CI_MACHINE: "cztb2"
-  extends: [.build]
+#cztb2-build-and-test:
+#  variables:
+#    CI_MACHINE: "cztb2"
+#  extends: [.build]
