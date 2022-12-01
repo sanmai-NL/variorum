@@ -1,4 +1,4 @@
-# Trigger a build pipeline for ruby, corona and lassen
+# Trigger a build pipeline for the following systems
 quartz-build-and-test:
   variables:
     CI_MACHINE: "quartz"
@@ -17,4 +17,9 @@ lassen-gpu-build-and-test:
 lassen-cpu-build-and-test:
   variables:
     CI_MACHINE: "lassen-cpu"
+  extends: [.build]
+
+cztb2-build-and-test:
+  variables:
+    CI_MACHINE: "cztb2"
   extends: [.build]

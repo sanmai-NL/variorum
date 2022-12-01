@@ -15,7 +15,7 @@ stages:
     - when: on_success
 
 .status_report: &status_report
-    - export context="lassen-cpu"
+    - export context="lassen-cpu-only"
     - |
       curl --url "https://api.github.com/repos/llnl/${CI_PROJECT_NAME}/statuses/${CI_COMMIT_SHA}" \
            --header 'Content-Type: application/json' \

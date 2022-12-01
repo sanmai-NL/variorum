@@ -41,16 +41,5 @@ stages:
 #   - wget https://sourceforge.net/projects/astyle/files/astyle/astyle%203.1/astyle_3.1_linux.tar.gz
 #   - ./scripts/.ci-check-rst-format.sh
 
-## build across power lab
-#build-cztb2:
-# tags:
-#   - shell
-#   - cztb2
-# stage: build
-# script:
-#   - git clone $VARIORUM_ANSIBLE
-#   - cd variorum-ansible-setup
-#   - ansible-playbook variorum-powerlab-playbook.yml
-
 include:
   - local: .gitlab/subscribed-pipelines.yml
