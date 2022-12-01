@@ -23,6 +23,9 @@ stages:
            --data "{ \"state\": \"${pipeline_status}\", \"target_url\": \"${CI_PIPELINE_URL}\", \"description\": \"GitLab ${context} pipeline\", \"context\": \"ci/gitlab/${context}\" }"
 
 status_pending:
+  tags:
+    - shell
+    - cztb2
   extends: [.on_cztb2]
   stage: status_initiate
   script:
@@ -30,6 +33,9 @@ status_pending:
     - *status_report
 
 status_success:
+  tags:
+    - shell
+    - cztb2
   extends: [.on_cztb2]
   stage: status_update
   script:
@@ -38,6 +44,9 @@ status_success:
   when: on_success
 
 status_failure:
+  tags:
+    - shell
+    - cztb2
   extends: [.on_cztb2]
   stage: status_update
   script:
